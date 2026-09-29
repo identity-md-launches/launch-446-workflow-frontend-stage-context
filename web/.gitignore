@@ -1,0 +1,13 @@
+# Dependencies and caches (never committed)
+node_modules/
+.vite/
+coverage/
+
+# Generated at build time by scripts/prepare-config.mjs from deployment/ and ../docs/abi/.
+# The committed runtime copy lives in ../dist/ after `npm run build`.
+public/abi/
+public/imd-deployment.json
+
+# Local overrides
+.env
+.env.local

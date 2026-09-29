@@ -1,0 +1,54 @@
+{
+  "chainId": 11155111,
+  "repoUrl": "https://github.com/identity-md-launches/launch-445-workflow-contract-stage-context",
+  "version": 1,
+  "launchId": "a36cb67d-208f-4149-a31a-4a55cac4833c",
+  "manifest": {
+    "kind": "evm_project",
+    "pool": {
+      "fee": 3000,
+      "tickSpacing": 60,
+      "initialPrice": "79228162514264337593543950336",
+      "pairedCurrency": "0x0000000000000000000000000000000000000000"
+    },
+    "notes": "Sepolia only (11155111). LaunchToken has no constructor arguments. ImdCardPayment is fully configured at construction with no initialization calls or owner/admin functions. Its immutable settlement recipient is $owner, resolved exclusively from policy; independent review must confirm that this beneficiary is the intended settlement operator. Mock prices use eight USD decimals: $20 per Claude-month pack and $0.01 per IMD. ceil(20 / 0.01) plus 8% gives 2160 IMD per pack; the contract permits 1-3 packs per transaction with a 0% service fee. Payments are forwarded immediately to the settlement recipient. The $60 float target and full IMD refund if no card arrives within 15 minutes are off-chain operator obligations, not enforced by the contract; the event deadline is not a refund mechanism. Operator fulfillment, refunds and beneficiary authorization remain review concerns. The pool pairs with native ETH without a hook; initialPrice is decimal sqrtPriceX96 (2^96), subject to any pinned policy opening-price override by services. Policy and signed artifact linkage belong to services.",
+    "token": {
+      "name": "IdentityMD",
+      "symbol": "IMD",
+      "contract": "LaunchToken",
+      "decimals": 18
+    },
+    "contracts": [
+      {
+        "contract": "ImdCardPayment",
+        "constructorArgs": [
+          "$token",
+          "$owner",
+          "2000000000",
+          "1000000"
+        ]
+      }
+    ]
+  },
+  "contracts": [
+    {
+      "name": "LaunchToken",
+      "txHash": "0x17804b249f2d392b8566a154e14fef69f534c716686395a5575f3903d500d0bc",
+      "abiHash": "38880b8e56d42ce900f744a7908c7139632a49f1c3f33385c64ceaed29d37bee",
+      "address": "0x10a7117e2f6d89afe15fa8adbc965d7e1c78613f",
+      "blockNumber": 11805027,
+      "creationCodeHash": "6571b83b4a13112a3dd52d137b55db7bafd17acf78e5d3b5b63603b282f57016"
+    },
+    {
+      "name": "ImdCardPayment",
+      "txHash": "0x17804b249f2d392b8566a154e14fef69f534c716686395a5575f3903d500d0bc",
+      "abiHash": "c1aa992acd11105994b655c943d42bf9c7422b226a86ba69a5837105d99026f5",
+      "address": "0x7ffdd2022de16ff12487904e60e9e8f0c4892721",
+      "blockNumber": 11805027,
+      "creationCodeHash": "4212a4669c9da4da8a34916cb2b8da91d15b6dd4bf24686ec253c140e66d25c3"
+    }
+  ],
+  "sourceCommit": "1e0ac5e9cb8a1f5a4b9e7007295827ee6d66e348",
+  "abiInstructions": "Build ABIs from this exact source commit; compare canonicalKeccak(abi) with abiHash. Verify deployed code on the stated chain before enabling transactions.",
+  "attestationHash": "5b3907fa0cfc78af7723ac9def1e4206dbcac1f29e4a637118bdc68fa5d08c1a"
+}
